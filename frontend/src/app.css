@@ -1,0 +1,131 @@
+body {
+  background-color: #f4f4f9;
+  font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+header h1 {
+  text-align: center;
+  color: #555;
+  font-weight: 300;
+}
+
+.card {
+  background-color: #fffbeb;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  border-left: 5px solid #ffdd57;
+}
+
+.input-card textarea {
+  width: 100%;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 15px;
+  resize: vertical;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.input-card button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #ffc107;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-card button:hover {
+  background-color: #ffb300;
+}
+
+.input-card button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.emotion-selector h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.emotion {
+  font-size: 28px;
+  cursor: pointer;
+  margin-right: 15px;
+  opacity: 0.5;
+  transition: all 0.2s;
+}
+
+.emotion.selected {
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+.diary-list {
+  margin-top: 30px;
+}
+
+.diary-entry .diary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #ddd;
+  padding-bottom: 10px;
+}
+
+.diary-emotion {
+  font-size: 24px;
+}
+
+.diary-date {
+  font-size: 12px;
+  color: #888;
+}
+
+.diary-content {
+  font-size: 16px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  margin-top: 0;
+}
+
+.ai-comment {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f0f8ff;
+  border-radius: 4px;
+  font-size: 14px;
+  border: 1px solid #e0e8ef;
+}
+
+.ai-comment strong {
+  color: #007bff;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
