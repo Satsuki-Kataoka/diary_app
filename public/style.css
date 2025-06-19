@@ -1,0 +1,61 @@
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+header, main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.entry-form, .diary-card {
+    background-color: #fff9c4; /* 薄い黄色 */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1); /* 影をつけて浮いているように見せる */
+}
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+button:hover {
+    background-color: #45a049;
+}
+.emotion-selector .emotion-btn {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+.emotion-selector .emotion-btn.selected {
+    background-color: #ffeb3b; /* 選択されたら色を変える */
+    border-color: #fbc02d;
+}
+.diary-card h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+.ai-comment {
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    padding: 10px;
+    margin-top: 15px;
+    font-style: italic;
+}
