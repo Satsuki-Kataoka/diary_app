@@ -1,4 +1,3 @@
-// backend/server.js
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -6,61 +5,61 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const app = express();
 app.use(cors());
-app.use(express.json()); // リクエストのbodyをJSONとして解析
+app.use(express.json());
 
-// ★AIのセットアップ
+// Google AIの初期化
+if (!process.env.GEMINI_API_KEY) {
+  throw new Error("GEMINI_API_KEY is not defined in .env file");
+}
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// データベースの代わりのインメモリ配列（簡単のため）
-// 本来はここにPostgreSQLなどのデータベース処理が入ります
-let diaries = [];
+// 本来はデータベースを使うが、簡単のためメモリ上の配列でデータを保持
+let diaries = []; 
 let nextId = 1;
 
-// ヘルスチェック用
-app.get('/', (req, res) => {
-  res.send('Diary App API is running!');
-});
-
-// 日記の一覧を取得するAPI
+// API: 日記の一覧を取得
 app.get('/api/diaries', (req, res) => {
-  res.json(diaries);
+  // 新しいものが上に来るようにソートして返す
+  res.json([...diaries].sort((a, b) => b.id - a.id));
 });
 
-// 新しい日記を投稿するAPI
+// API: 新しい日記を投稿
 app.post('/api/diaries', async (req, res) => {
   const { content, emotion } = req.body;
-  if (!content) {
-    return res.status(400).json({ error: 'Content is required' });
+
+  if (!content && !emotion) {
+    return res.status(400).json({ error: 'Content or emotion is required' });
   }
 
-  // ★AIコメント生成処理
+  // AIに渡すためのテキストを準備
+  const promptText = content || `今日は${emotion}な気分の1日でした。`;
+
+  // AIによるコメント生成
   let aiComment = '';
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const prompt = `以下の日記に対して、友達のように優しく短いコメントをしてください。\n\n日記：${content}`;
+    const prompt = `以下の日記に対して、友達のように優しく短いコメントをしてください。\n\n日記：${promptText}`;
     const result = await model.generateContent(prompt);
     const response = await result.response;
     aiComment = response.text();
   } catch (error) {
     console.error("AI comment generation failed:", error);
-    aiComment = "コメントを生成できませんでした。";
+    aiComment = "AIからのコメントの取得に失敗しました。";
   }
 
   const newDiary = {
     id: nextId++,
-    content,
-    emotion,
+    content: content,
+    emotion: emotion,
+    aiComment: aiComment,
     createdAt: new Date(),
-    aiComment: aiComment, // AIのコメントも一緒に保存
   };
 
   diaries.push(newDiary);
-  console.log('New diary added:', newDiary);
   res.status(201).json(newDiary);
 });
 
-
 const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Backend server running on http://localhost:${PORT}`);
 });
