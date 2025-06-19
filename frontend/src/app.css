@@ -18,12 +18,12 @@ header h1 {
 }
 
 .card {
-  background-color: #fffbeb;
+  background-color: #fffbeb; /* 黄色い付箋の色 */
   padding: 25px;
   margin-bottom: 20px;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  border-left: 5px solid #ffdd57;
+  border-left: 5px solid #ffdd57; /* 左のアクセントライン */
 }
 
 .input-card textarea {
@@ -35,7 +35,7 @@ header h1 {
   margin-top: 15px;
   resize: vertical;
   background-color: #fff;
-  box-sizing: border-box;
+  box-sizing: border-box; /* paddingとborderをwidthに含める */
 }
 
 .input-card button {
@@ -107,8 +107,9 @@ header h1 {
 .diary-content {
   font-size: 16px;
   line-height: 1.7;
-  white-space: pre-wrap;
+  white-space: pre-wrap; /* 改行をそのまま表示 */
   margin-top: 0;
+  margin-bottom: 1em;
 }
 
 .ai-comment {
