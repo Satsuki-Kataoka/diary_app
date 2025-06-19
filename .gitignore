@@ -1,0 +1,5 @@
+# Node.jsの依存関係ファイル
+node_modules/
+
+# 環境変数ファイル（APIキーなどの秘密情報）
+.env
