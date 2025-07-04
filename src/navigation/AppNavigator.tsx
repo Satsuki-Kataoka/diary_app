@@ -26,7 +26,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
+      <Stack.Navigator>
         initialRouteName="Home" // アプリ起動時に最初に表示する画面
         screenOptions={{
           // 全画面に共通のヘッダースタイルなどを設定可能
@@ -38,7 +38,7 @@ export const AppNavigator = () => {
             fontWeight: 'bold',
           },
         }}
-      >
+      
         <Stack.Screen
           name="Home"
           component={HomeScreen}
